@@ -18,4 +18,29 @@ public class Driver {
         System.out.println(salesPeople[0].calcTotalSales());
     }
 
+    public static String highest(SalesPerson[] salesPeople) {
+        double maxTotalSales = 0.0;
+        String highestSalesPersonId = "";
+
+        for (int i = 0; i < salesPeople.length; i++) {
+            double totalSales = salesPeople[i].calcTotalSales();
+            if (totalSales > maxTotalSales) {
+                maxTotalSales = totalSales;
+                highestSalesPersonId = salesPeople[i].getId();
+            }
+        }
+
+        return highestSalesPersonId;
+    }
+
+    public static void addSales(Sales s, String id, SalesPerson[] salesPeople) {
+        for (int i = 0; i < salesPeople.length; i++) {
+            if (salesPeople[i].getId().equals(id)) {
+                salesPeople[i].setSalesHistory(s);
+                break;
+            }
+        }
+    }
+
+
 }
